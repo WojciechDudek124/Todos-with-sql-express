@@ -5,8 +5,10 @@ const taskRouter = express.Router();
 
 taskRouter
     .get('/', async (req, res) => {
-        const data = await TodoRecord.findAll();
-        res.json(data)
+        const tasks = await TodoRecord.findAll();
+        res.render('tasks/list-all', {
+            tasks
+        })
     })
 
 module.exports = {

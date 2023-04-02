@@ -1,0 +1,22 @@
+<h1>Lista zadań do zrobienia:</h1>
+    <section class="container">
+        <ul class="todo-list">
+            {{#each tasks}}
+                <lil>
+                    <p>{{this.title}}</p>
+                    <a href="/task/{{this.id}}">Edit</a>
+                    <form method="POST" action="/tasks/deleted/{{this.id}}?_method=DELETE">
+                        <button type="submit"><ion-icon name="trash-outline"></ion-icon>
+                        </button>
+                    </form>
+                </lil>
+            {{/each}}
+        </ul>
+
+        <div>
+            <form method="GET" action="/task">
+                <input type="text" name="text">
+                <button type="submit">Add new task</button>
+            </form>
+        </div>
+    </section>
