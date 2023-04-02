@@ -1,5 +1,6 @@
 const express = require('express');
 const {TodoRecord} = require("../records/todo.record");
+const {db} = require("../projecty/client-base-CRM/utils/db");
 
 const taskRouter = express.Router();
 
@@ -9,6 +10,28 @@ taskRouter
         res.render('tasks/list-all', {
             tasks
         })
+    })
+
+    .post ('/', async (req, res) => {
+        const task = new TodoRecord({
+            title: req.body.text,
+        });
+
+        console.log(task);
+        await task.insert();
+
+        res.status(201)
+            .render(`tasks/add`);
+    })
+
+    .get('/edit/:id', async(req,res)=> {
+        const task = await TodoRecord.find();
+
+        console.log(task);
+
+        res.render('tasks/edit', {
+            task
+        });
     })
 
 module.exports = {

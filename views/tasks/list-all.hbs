@@ -2,19 +2,22 @@
     <section class="container">
         <ul class="todo-list">
             {{#each tasks}}
-                <lil>
+                <li>
                     <p>{{this.title}}</p>
-                    <a href="/task/{{this.id}}">Edit</a>
+<!--                    <a href="/task/edit/{{this.title}}">Edit</a>-->
                     <form method="POST" action="/tasks/deleted/{{this.id}}?_method=DELETE">
                         <button type="submit"><ion-icon name="trash-outline"></ion-icon>
                         </button>
                     </form>
-                </lil>
+                    <form method="GET" action="/task/edit/{{this.id}}">
+                        <button type="submit">Edit task</button>
+                    </form>
+                </li>
             {{/each}}
         </ul>
 
         <div>
-            <form method="GET" action="/task">
+            <form method="POST" action="/task">
                 <input type="text" name="text">
                 <button type="submit">Add new task</button>
             </form>

@@ -22,7 +22,7 @@ class TodoRecord {
     async insert() {
         this.id = this.id ?? uuid();
 
-        await pool.execute('INSERT INTO `todos.js` VALUES(:id, :title)', {
+        await pool.execute('INSERT INTO `todos` VALUES(:id, :title)', {
             id: this.id,
             title: this.title,
         });
@@ -35,13 +35,13 @@ class TodoRecord {
             throw new Error ('Todo has no ID');
         }
 
-        await pool.execute('DELETE FROM `todos.js` WHERE `id` = :id' , {
+        await pool.execute('DELETE FROM `todos` WHERE `id` = :id' , {
             id: this.id,
         });
     }
 
     static async find(id){
-        const [results] = await pool.execute('SELECT * FROM `todos.js` WHERE `id` = :id' ,{
+        const [results] = await pool.execute('SELECT * FROM `todos` WHERE `id` = :id' ,{
             id: id,
         });
         return results.length === 1 ? new TodoRecord(result[0]) : null;
@@ -59,7 +59,7 @@ class TodoRecord {
 
         this._validate();
 
-        await pool.execute('UPDATE `todos.js` SET `title` = :title WHERE `id` = :id', {
+        await pool.execute('UPDATE `todos` SET `title` = :title WHERE `id` = :id', {
             id: this.id,
             title: this.title,
         });
