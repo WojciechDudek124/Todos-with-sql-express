@@ -44,7 +44,7 @@ class TodoRecord {
         const [results] = await pool.execute('SELECT * FROM `todos` WHERE `id` = :id' ,{
             id: id,
         });
-        return results.length === 1 ? new TodoRecord(result[0]) : null;
+        return results.length === 1 ? new TodoRecord(results[0]) : null;
     }
 
     static async findAll() {

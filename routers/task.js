@@ -25,7 +25,8 @@ taskRouter
     })
 
     .get('/edit/:id', async(req,res)=> {
-        const task = await TodoRecord.find();
+        const id = req.params.id;
+        const task = await TodoRecord.find(id);
 
         console.log(task);
 
