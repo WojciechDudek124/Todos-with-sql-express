@@ -24,6 +24,20 @@ taskRouter
             .render(`tasks/add`);
     })
 
+    .put('/:id', async (req,res)=>{
+        const task = new TodoRecord({
+            title: req.body.text,
+            id: req.params.id,
+        })
+
+        console.log(task)
+        await task.update()
+
+        res.render('tasks/edited', {
+            task
+        });
+    })
+
     .get('/edit/:id', async(req,res)=> {
         const id = req.params.id;
         const task = await TodoRecord.find(id);

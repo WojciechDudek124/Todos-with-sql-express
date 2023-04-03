@@ -1,7 +1,8 @@
 <h2>You edit task {{task.title}}</h2>
-<div>
-     <p>{{task.title}}</p>
+<form method="POST" action="/task/{{task.id}}?_method=PUT">
+    <div>
+        <p>{{task.title}}</p>
         <input type="text" name="text" value="{{task.title}}">
         <button type="submit">Save</button>
-    </form>
-</div>
+    </div>
+</form>
