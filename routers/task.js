@@ -24,6 +24,14 @@ taskRouter
             .render(`tasks/add`);
     })
 
+    .delete ('/deleted/:id', async (req, res) => {
+        const foundTodo = await TodoRecord.find(req.params.id);
+
+        await foundTodo.delete();
+
+        res.render('tasks/deleted')
+    })
+
     .put('/:id', async (req,res)=>{
         const task = new TodoRecord({
             title: req.body.text,

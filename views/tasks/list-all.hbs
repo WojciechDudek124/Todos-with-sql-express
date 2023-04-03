@@ -4,8 +4,7 @@
             {{#each tasks}}
                 <li>
                     <p>{{this.title}}</p>
-<!--                    <a href="/task/edit/{{this.title}}">Edit</a>-->
-                    <form method="POST" action="/tasks/deleted/{{this.id}}?_method=DELETE">
+                    <form method="POST" action="/task/deleted/{{this.id}}?_method=DELETE">
                         <button type="submit"><ion-icon name="trash-outline"></ion-icon>
                         </button>
                     </form>
