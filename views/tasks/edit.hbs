@@ -1,8 +1,9 @@
-<h2>You edit task {{task.title}}</h2>
-<form method="POST" action="/task/{{task.id}}?_method=PUT">
-    <div>
-        <p>{{task.title}}</p>
-        <input type="text" name="text" value="{{task.title}}">
-        <button type="submit">Save</button>
+<section class="section-edit container">
+<p class="content-text">You edit task <strong>"{{task.title}}"</strong></p>
+<form method="POST" action="/task/{{task.id}}?_method=PUT" class="edit-task-main-page-form">
+    <div class="edit-box">
+        <input type="text" name="text" value={{task.title}} class="task-space">
+        <button class="btn-use"  type="submit">Save</button>
     </div>
 </form>
+</section>

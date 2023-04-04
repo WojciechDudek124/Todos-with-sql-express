@@ -9,6 +9,6 @@
     "uuid": "^9.0.0"
   },
   "scripts": {
-    "start": "npx nodemon projecty/client-base-CRM/index.js"
+
   }
 }
